@@ -1,0 +1,12 @@
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: delegate-blog
+  namespace: default
+spec:
+  routes:
+  - match: /blog
+    services:
+    - name: nginx-2
+      port: 80
+

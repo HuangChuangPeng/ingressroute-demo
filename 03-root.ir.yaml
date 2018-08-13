@@ -1,0 +1,17 @@
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: delegate-root
+  namespace: default
+spec:
+  virtualhost:
+    fqdn: delegate.exampledomain.com
+  routes:
+  - match: /
+    services:
+    - name: nginx-1
+      port: 80
+  - match: /blog
+    delegate:
+      name: delegate-blog
+    # namespace: other-namespace

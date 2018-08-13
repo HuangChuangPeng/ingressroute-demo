@@ -1,0 +1,27 @@
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: duplicate-1
+  namespace: default
+spec:
+  virtualhost:
+    fqdn: duplicate.exampledomain.com
+  routes:
+  - match: /
+    services:
+    - name: nginx-1
+      port: 80
+---
+apiVersion: contour.heptio.com/v1beta1
+kind: IngressRoute
+metadata:
+  name: duplicate-2
+  namespace: default
+spec:
+  virtualhost:
+    fqdn: duplicate.exampledomain.com
+  routes:
+  - match: /
+    services:
+    - name: nginx-1
+      port: 80
